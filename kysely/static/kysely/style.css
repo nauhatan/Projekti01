@@ -1,0 +1,9 @@
+li a {
+    font-size: 20px;
+    color: red;
+}
+body {
+    color: blue;
+    background: white url("images/background_django_mysite.jpg") no-repeat;
+
+}

@@ -1,0 +1,15 @@
+{% extends 'kysely/base.html' %}
+
+{% block main_content %}
+
+<h1>{{ kysymys.kysymys_txt }}</h1>
+<ul>
+    {% for vaihtoehto in kysymys.vaihtoehto_set.all %}
+    <li>
+        {{ vaihtoehto.vaihtoehto_txt }} -- {{ vaihtoehto.valinta }} vote{{ vaihtoehto.valinta|pluralize }}
+         </li>
+        {% endfor %}
+</ul>
+<a href="{% url 'kysely:detail' kysymys.id %}">Vote again?</a>
+
+{% endblock %}

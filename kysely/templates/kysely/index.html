@@ -1,0 +1,17 @@
+{% extends 'kysely/base.html' %}
+
+{% block main_content %}
+<h1 class="display-3">Choose a question</h1>
+{% if viimeisin_kysymys %}
+<ul>
+   {% for kysymys in viimeisin_kysymys %}
+    <li><a href="{% url 'kysely:detail' kysymys.id %}"><b>{{ kysymys.kysymys_txt }}</b></a></li>
+    {% endfor %}
+</ul>
+    {% else %}
+<p>You don't have any questions. Please add some.</p>
+
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'kysely/base.html' %}
+
+{% block main_content %}
+
+<h1>{{kysymys.kysymys_txt}}</h1>
+{% if error_message%} <p><strong>{{ error_message }}</strong></p> {% endif %}
+<form action = "{% url 'kysely:vote' kysymys.id %}" method="post">
+    {% csrf_token %}
+    {% for vaihtoehto in kysymys.vaihtoehto_set.all %}
+        <input type="radio" name="vaihtoehto" id="vaihtoehto{{forloop.counter}}" value="{{vaihtoehto.id}}"/>
+    <label for="vaihtoehto{{forloop.counter}}">{{vaihtoehto.vaihtoehto_txt}}</label>
+    <br>
+    {% endfor %}
+    <input type="submit" class = "btn btn-primary" value="vote"/>
+</form>
+<a href ="{% url 'kysely:index' %}">Back to Questions</a>
+
+
+
+{% endblock %}
+
